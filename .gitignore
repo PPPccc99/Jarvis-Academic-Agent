@@ -1,0 +1,14 @@
+AI_Agent/07_Dashboard/dashboard_server.pid
+*_贾维斯智能体工作任务/
+*.tmp
+*.log
+__pycache__/
+*.pyc
+
+# User/project materials should not be committed to the public template.
+target_journal_papers/
+references/
+drafts/
+data/
+results/
+figures_private/

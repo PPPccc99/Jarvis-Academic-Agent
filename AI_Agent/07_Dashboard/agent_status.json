@@ -1,0 +1,175 @@
+﻿{
+    "project":  "{{PROJECT_ROOT}}",
+    "dashboard_name":  "贾维斯论文写作智能体工作台",
+    "last_updated":  "未启动",
+    "active_chain":  [
+                         "01"
+                     ],
+    "workflow_stage":  "等待召唤贾维斯",
+    "summary":  {
+                    "current_goal":  "等待用户在项目中说“召唤贾维斯”",
+                    "next_action":  "安装后替换 {{PROJECT_ROOT}} 为实际项目路径，再在 Codex 新对话中召唤贾维斯",
+                    "blocking_issue":  "",
+                    "task_folder":  ""
+                },
+    "agents":  [
+                   {
+                       "id":  "01",
+                       "name":  "主控智能体",
+                       "group":  "主控层",
+                       "status":  "idle",
+                       "role":  "分配任务、整合结论、判断子智能体工作是否合格，并与用户沟通。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "04_Task_Records"
+                   },
+                   {
+                       "id":  "02",
+                       "name":  "文件提取与资料整理智能体",
+                       "group":  "资料层",
+                       "status":  "idle",
+                       "role":  "提取 PDF、Word、CAJ、图片、表格和元数据，建立资料索引。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "03_Knowledge_Base/extracted_text"
+                   },
+                   {
+                       "id":  "03",
+                       "name":  "目标期刊论文拆解智能体",
+                       "group":  "资料层",
+                       "status":  "idle",
+                       "role":  "拆解用户指定目标期刊近期论文的选题、结构、图表、创新点和语言规律。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "03_Knowledge_Base/target_journal"
+                   },
+                   {
+                       "id":  "04",
+                       "name":  "参考文献论文拆解智能体",
+                       "group":  "资料层",
+                       "status":  "idle",
+                       "role":  "拆解研究现状、方法优缺点、证据链和研究空白。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "03_Knowledge_Base/references"
+                   },
+                   {
+                       "id":  "05",
+                       "name":  "文献与证据库管理智能体",
+                       "group":  "资料层",
+                       "status":  "idle",
+                       "role":  "统一管理目标期刊拆解、参考文献证据、用户数据和阶段结论。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "03_Knowledge_Base/evidence"
+                   },
+                   {
+                       "id":  "06",
+                       "name":  "选题与创新点写作智能体",
+                       "group":  "选题规划层",
+                       "status":  "idle",
+                       "role":  "将用户初始思路转化为题目、科学问题、创新点和工程意义。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/01_topic"
+                   },
+                   {
+                       "id":  "07",
+                       "name":  "论文任务书写作智能体",
+                       "group":  "选题规划层",
+                       "status":  "idle",
+                       "role":  "设计全文结构、章节目标、研究路线和写作任务。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/02_task_book"
+                   },
+                   {
+                       "id":  "08",
+                       "name":  "正文写作智能体",
+                       "group":  "正文写作层",
+                       "status":  "idle",
+                       "role":  "撰写摘要、引言、第二章、第三章等正文内容。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/03_draft_sections"
+                   },
+                   {
+                       "id":  "09",
+                       "name":  "仿真和实验计划安排智能体",
+                       "group":  "验证层",
+                       "status":  "idle",
+                       "role":  "设计 CST、SolidWorks、有限元、实验平台和评价指标方案。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/04_simulation_experiment_plan"
+                   },
+                   {
+                       "id":  "10",
+                       "name":  "数据与结果校核智能体",
+                       "group":  "验证层",
+                       "status":  "idle",
+                       "role":  "检查仿真和实验数据、单位、坐标、误差和结论支撑关系。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/05_results_analysis"
+                   },
+                   {
+                       "id":  "11",
+                       "name":  "仿真实验结果分析智能体",
+                       "group":  "结果层",
+                       "status":  "idle",
+                       "role":  "撰写第四章、第五章结果分析和第六章结论初稿。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/05_results_analysis"
+                   },
+                   {
+                       "id":  "12",
+                       "name":  "图表呈现智能体",
+                       "group":  "图表层",
+                       "status":  "idle",
+                       "role":  "规划图表插入位置、图题、坐标、尺寸、颜色和编号。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/06_figures_tables"
+                   },
+                   {
+                       "id":  "13",
+                       "name":  "语言与格式润色智能体",
+                       "group":  "终稿层",
+                       "status":  "idle",
+                       "role":  "润色全文语言、术语、逻辑衔接和格式统一。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/07_polished_final"
+                   },
+                   {
+                       "id":  "14",
+                       "name":  "投稿规范检查智能体",
+                       "group":  "终稿层",
+                       "status":  "idle",
+                       "role":  "检查用户指定目标期刊投稿规范、图表、参考文献和材料清单。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "06_Outputs/08_submission_check"
+                   },
+                   {
+                       "id":  "15",
+                       "name":  "审稿人模拟智能体",
+                       "group":  "审查层",
+                       "status":  "idle",
+                       "role":  "模拟审稿人审查选题、结构、证据、结果和拒稿风险。",
+                       "current_task":  "",
+                       "called_by":  "",
+                       "output":  "04_Task_Records"
+                   }
+               ],
+    "events":  [
+                   {
+                       "time":  "未启动",
+                       "message":  "贾维斯模板状态文件已初始化。",
+                       "agent":  "01",
+                       "type":  "system"
+                   }
+               ]
+}

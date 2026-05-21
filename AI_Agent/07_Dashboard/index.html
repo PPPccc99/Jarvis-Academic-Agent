@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>贾维斯论文写作智能体工作台</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">{{PROJECT_ROOT}} / AI_Agent</p>
+        <h1>贾维斯论文写作智能体工作台</h1>
+      </div>
+      <div class="top-actions">
+        <span id="lastUpdated" class="timestamp">等待状态文件</span>
+        <button id="refreshBtn" type="button">刷新</button>
+      </div>
+    </header>
+
+    <section class="status-strip" aria-label="状态统计">
+      <div class="metric active">
+        <span id="countActive">0</span>
+        <p>工作中</p>
+      </div>
+      <div class="metric waiting">
+        <span id="countWaiting">0</span>
+        <p>等待</p>
+      </div>
+      <div class="metric blocked">
+        <span id="countBlocked">0</span>
+        <p>阻塞</p>
+      </div>
+      <div class="metric done">
+        <span id="countDone">0</span>
+        <p>完成</p>
+      </div>
+      <div class="metric idle">
+        <span id="countIdle">0</span>
+        <p>空闲</p>
+      </div>
+    </section>
+
+    <section class="panel mascot-panel" aria-label="后台智能体小队">
+      <div class="panel-head mascot-head">
+        <div>
+          <h2>后台智能体</h2>
+          <p class="panel-note">每个智能体都有独立颜色和小图标；当前调用链中的智能体会标记为（努力工作中）。</p>
+        </div>
+        <span id="mascotCount" class="stage">15 个智能体</span>
+      </div>
+      <div id="mascotDeck" class="mascot-deck"></div>
+    </section>
+
+    <section class="overview">
+      <div class="panel main-panel">
+        <div class="panel-head">
+          <h2>当前调用链</h2>
+          <span id="workflowStage" class="stage">未开始</span>
+        </div>
+        <div id="callChain" class="call-chain"></div>
+        <div class="summary-grid">
+          <div>
+            <p class="label">当前目标</p>
+            <p id="currentGoal">等待任务</p>
+          </div>
+          <div>
+            <p class="label">下一步</p>
+            <p id="nextAction">等待主控智能体分配</p>
+          </div>
+          <div>
+            <p class="label">阻塞问题</p>
+            <p id="blockingIssue">无</p>
+          </div>
+          <div>
+            <p class="label">本轮工作文件夹</p>
+            <p id="taskFolder">未创建</p>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel side-panel">
+        <div class="panel-head">
+          <h2>最近事件</h2>
+        </div>
+        <ol id="eventList" class="events"></ol>
+      </aside>
+    </section>
+
+    <section class="toolbar" aria-label="筛选">
+      <div class="filters" id="filters">
+        <button type="button" class="filter is-active" data-filter="all">全部</button>
+        <button type="button" class="filter" data-filter="主控层">主控层</button>
+        <button type="button" class="filter" data-filter="资料层">资料层</button>
+        <button type="button" class="filter" data-filter="选题规划层">选题规划层</button>
+        <button type="button" class="filter" data-filter="正文写作层">正文写作层</button>
+        <button type="button" class="filter" data-filter="验证层">验证层</button>
+        <button type="button" class="filter" data-filter="结果层">结果层</button>
+        <button type="button" class="filter" data-filter="图表层">图表层</button>
+        <button type="button" class="filter" data-filter="终稿层">终稿层</button>
+        <button type="button" class="filter" data-filter="审查层">审查层</button>
+      </div>
+      <label class="search">
+        <span>搜索</span>
+        <input id="searchInput" type="search" placeholder="智能体名称或任务">
+      </label>
+    </section>
+
+    <section id="agentGrid" class="agent-grid" aria-label="智能体列表"></section>
+  </main>
+
+  <script src="./dashboard.js"></script>
+</body>
+</html>
