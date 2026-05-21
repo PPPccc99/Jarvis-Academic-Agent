@@ -63,6 +63,10 @@ install.ps1
 5. 建立领域画像和材料缺口清单。
 6. 按最小调用原则调度必要子智能体参与论文分析、写作或审查。
 
+## License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
 ## 注意
 
 - 不要把自己的论文原文、参考文献、实验数据或任务输出提交到公开仓库。
