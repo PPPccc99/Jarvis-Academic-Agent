@@ -56,17 +56,24 @@ async function loadStatus() {
   render();
 }
 
+function normalizeAgentId(id) {
+  const raw = String(id || "").trim();
+  return /^\d+$/.test(raw) ? raw.padStart(2, "0") : raw;
+}
+
 function agentById(id) {
-  return (state.agents || []).find((agent) => agent.id === id);
+  const normalized = normalizeAgentId(id);
+  return (state.agents || []).find((agent) => normalizeAgentId(agent.id) === normalized);
 }
 
 function visualFor(agent) {
-  return agentVisuals[agent.id] || { mark: agent.id, shape: "round", color: "#667085", soft: "#eef2f6" };
+  const normalized = normalizeAgentId(agent.id);
+  return agentVisuals[normalized] || { mark: normalized, shape: "round", color: "#667085", soft: "#eef2f6" };
 }
 
 function isWorkingAgent(agent) {
-  const chain = state.active_chain || [];
-  return agent.status === "active" || chain.includes(agent.id);
+  const chain = (state.active_chain || []).map(normalizeAgentId);
+  return agent.status === "active" || chain.includes(normalizeAgentId(agent.id));
 }
 
 function mascotMarkup(agent, sizeClass = "") {
@@ -138,13 +145,13 @@ function renderMascots() {
 function renderChain() {
   const chain = document.getElementById("callChain");
   chain.innerHTML = "";
-  const ids = state.active_chain && state.active_chain.length ? state.active_chain : ["01"];
+  const ids = (state.active_chain && state.active_chain.length ? state.active_chain : ["01"]).map(normalizeAgentId);
   ids.forEach((id, index) => {
     const agent = agentById(id);
     const node = document.createElement("div");
     node.className = "chain-node";
     node.innerHTML = agent
-      ? `${mascotMarkup(agent, "pet-chain")}<span>${id} ${agent.name}</span>`
+      ? `${mascotMarkup(agent, "pet-chain")}<span>${normalizeAgentId(agent.id)} ${agent.name}</span>`
       : `<span class="dot idle"></span><span>${id} 未知智能体</span>`;
     chain.appendChild(node);
     if (index < ids.length - 1) {
